@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 dd
+=======
+라즈베리파이 연결해서 
+dynamo db를 
+dynamo db공부
+>>>>>>> 7cfcbaaffeccd1e0d341867c4f7a39b6aa223a8b
