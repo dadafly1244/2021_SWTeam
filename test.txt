@@ -1,0 +1,3 @@
+라즈베리파이 연결해서 
+dynamo db를 
+dynamo db공부
