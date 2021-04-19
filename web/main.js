@@ -15,9 +15,9 @@ var app = http.createServer(function(request,response){
           var description = 'Hello, Node.js';
           var list = template.list(filelist);
           var html = template.HTML(title, list,
-            `<h2>${title}</h2><input type="button" style="width:50px" value="Dark" onclick="
-            document.querySelector('body').style.backgroundColor='black';
-            document.querySelector('body').style.color='white';">${description}`,
+            `<h2>${title}</h2>${description}
+            <a href="/feed_process"><input type="button" value="사료주기"></a>
+            <a href="/map"><input type="button" value="지도"></a>`,
             `<a href="/create">create</a>`
           );
           response.writeHead(200);
@@ -128,6 +128,23 @@ var app = http.createServer(function(request,response){
             response.end();
           })
       });
+    } else if(pathname === '/feed_process'){//사료주기버튼 클릭시.
+        //IoT기기의 서보모터 동작시키기.
+        response.writeHead(302, {Location: '/'});//홈화면으로 돌아가기?.
+        response.end();
+
+    } else if(pathname === '/map'){
+      fs.readdir('./data', function(error, filelist){
+        var title = 'STCat House - Map';
+        var list = template.list(filelist);
+        //body부분에 지도API를 본문으로 가져오기.
+        var html = template.HTML(title, list, `<h2>Map</h2>
+
+        `, '');
+        response.writeHead(200);
+        response.end(html);
+      });
+
     } else {
       response.writeHead(404);
       response.end('Not found');
