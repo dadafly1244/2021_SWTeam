@@ -8,20 +8,22 @@ var app = http.createServer(function(request,response){
     var _url = request.url;
     var queryData = url.parse(_url, true).query;
     var pathname = url.parse(_url, true).pathname;
-    if(pathname === '/'){
-      if(queryData.id === undefined){
+    if(pathname === '/'){//pathname없는경우.
+      if(queryData.id === undefined){//home화면.쿼리없는경우.
         fs.readdir('./data', function(error, filelist){
           var title = 'Welcome';
           var description = 'Hello, Node.js';
           var list = template.list(filelist);
           var html = template.HTML(title, list,
-            `<h2>${title}</h2>${description}`,
+            `<h2>${title}</h2><input type="button" style="width:50px" value="Dark" onclick="
+            document.querySelector('body').style.backgroundColor='black';
+            document.querySelector('body').style.color='white';">${description}`,
             `<a href="/create">create</a>`
           );
           response.writeHead(200);
           response.end(html);
         });
-      } else {
+      } else {//쿼리있는경우.
         fs.readdir('./data', function(error, filelist){
           fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
             var title = queryData.id;

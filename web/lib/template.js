@@ -1,22 +1,22 @@
 module.exports = {
-  html : function(title, list, body, control){
+  HTML:function(title, list, body, control){
     return `
     <!doctype html>
     <html>
     <head>
-      <title>WEB1 - ${title}</title>
+      <title>STCat House - ${title}</title>
       <meta charset="utf-8">
+      <link rel="stylesheet" href="./css/main.css">
     </head>
     <body>
-      <h1><a href="/">WEB</a></h1>
+      <h1><a href="/">STCat House</a></h1>
       ${list}
       ${control}
       ${body}
     </body>
     </html>
     `;
-  },
-  list : function (filelist){
+  },list:function(filelist){
     var list = '<ul>';
     var i = 0;
     while(i < filelist.length){
@@ -27,5 +27,3 @@ module.exports = {
     return list;
   }
 }
-
-//module.exports = template;
