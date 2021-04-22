@@ -7,7 +7,7 @@ module.exports = {
       <style>
         #grid{
           display:grid;
-          grid-template-rows: 30px 1fr;
+          grid-template-rows: 130px 1fr;
         }
         div {
           text-align:center;
